@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BooksTest</string>
-    <string name="search">Search</string>
+    <string name="search_menu">Search</string>
+    <string name="search_hint">Enter Author or Book Title</string>
 </resources>

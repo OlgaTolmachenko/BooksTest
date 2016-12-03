@@ -3,9 +3,7 @@ package com.example.tolmachenko.bookstest;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +11,9 @@ import android.widget.SearchView;
 
 import com.example.tolmachenko.bookstest.model.CustomResponse;
 import com.example.tolmachenko.bookstest.util.Constants;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = this.getClass().getSimpleName();
 
-    private SharedPreferences sharedPrefs;
+//    private SharedPreferences sharedPrefs;
     private SearchView searchView;
 
 
@@ -46,19 +47,21 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-                sharedPrefs.edit().putString(SearchManager.QUERY, query).apply();
-                searchView.clearFocus();
-                Log.d(TAG, "onQueryTextSubmit: " + query);
-                getBooks(query, 0);
+//                sharedPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+//                sharedPrefs.edit().putString(SearchManager.QUERY, query).apply();
+//                searchView.clearFocus();
+                try {
+                    String q = URLEncoder.encode(query, "UTF-8");
+                    getBooks(q, 0);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 Log.d(TAG, "handleIntent: onQueryTextChange" + newText);
-                //TODO turn spaces to +
-                //TODO create regex to validate data input
                 return false;
             }
         });
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getBooks(String query, int startIndex) {
-        Call<CustomResponse> call = createService().getBooks(query, startIndex, "AIzaSyB-plaYU1DeedN5v3DGBu3p3sL4qsXflK8");
+        Call<CustomResponse> call = createService().getBooks(query, startIndex, BuildConfig.apiKey);
         call.enqueue(new Callback<CustomResponse>() {
             @Override
             public void onResponse(Call<CustomResponse> call, Response<CustomResponse> response) {

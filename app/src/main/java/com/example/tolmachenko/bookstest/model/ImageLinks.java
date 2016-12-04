@@ -12,6 +12,11 @@ public class ImageLinks {
     @SerializedName("thumbnail")
     private String thumbnail;
 
+    public ImageLinks(String smallThumbnail, String thumbnail) {
+        this.smallThumbnail = smallThumbnail;
+        this.thumbnail = thumbnail;
+    }
+
     public String getSmallThumbnail() {
         return smallThumbnail;
     }

@@ -54,7 +54,7 @@ public class VolumeInfo {
     }
 
     public String getTitle() {
-        return title;
+        return title == null ? "" : title;
     }
 
     public void setTitle(String title) {
@@ -150,6 +150,7 @@ public class VolumeInfo {
     }
 
     public ImageLinks getImageLinks() {
+        if (imageLinks == null) { return new ImageLinks("", ""); }
         return imageLinks;
     }
 
@@ -166,7 +167,7 @@ public class VolumeInfo {
     }
 
     public String getInfoLink() {
-        return infoLink;
+        return infoLink == null ? "" : infoLink;
     }
 
     public void setInfoLink(String infoLink) {

@@ -7,6 +7,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
+import static android.R.attr.key;
+
 /**
  * Created by Olga Tolmachenko on 02.12.16.
  */

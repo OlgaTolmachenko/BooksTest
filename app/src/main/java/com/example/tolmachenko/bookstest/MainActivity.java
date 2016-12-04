@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        
+
         searchView = createSearchView(menu);
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         layoutManager = new StaggeredGridLayoutManager(getColumnsNum(), StaggeredGridLayoutManager.VERTICAL);

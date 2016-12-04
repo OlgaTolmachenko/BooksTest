@@ -42,7 +42,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BooksViewHol
             Picasso.with(context)
                     .load(booksList.get(position).getThumbnail())
                     .placeholder(holder.thumbnail.getDrawable())
-                    .fit()
                     .transform(new RoundedCornersTransform())
                     .into(holder.thumbnail);
     }

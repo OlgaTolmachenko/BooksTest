@@ -3,6 +3,7 @@ package com.example.tolmachenko.bookstest.util;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.example.tolmachenko.bookstest.model.Book;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 /**
  * Created by Olga Tolmachenko on 03.12.16.

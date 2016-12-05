@@ -7,7 +7,10 @@
     android:layout_height="wrap_content"
     card_view:cardPreventCornerOverlap="true"
     card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="0.01dp">
+    android:layout_marginLeft="@dimen/card_margin_side"
+    android:layout_marginRight="@dimen/card_margin_side"
+    card_view:cardElevation="0.01dp"
+    android:layout_marginBottom="@dimen/card_margin_bottom">
 
     <RelativeLayout
         android:layout_width="match_parent"

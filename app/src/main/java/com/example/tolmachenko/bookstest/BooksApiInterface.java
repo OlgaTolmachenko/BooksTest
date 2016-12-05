@@ -17,5 +17,8 @@ public interface BooksApiInterface {
 
     @Headers("content-type: application/json")
     @GET("books/v1/volumes")
-    Call<CustomResponse> getBooks(@Query("q") String searchQuery, @Query("startIndex") int startIndex, @Query("key") String key);
+    Call<CustomResponse> getBooks(@Query("q") String searchQuery,
+                                  @Query("startIndex") int startIndex,
+                                  @Query("maxResults") int maxResults,
+                                  @Query("key") String key);
 }

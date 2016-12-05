@@ -150,7 +150,7 @@ public class VolumeInfo {
     }
 
     public ImageLinks getImageLinks() {
-        if (imageLinks == null) { return new ImageLinks("", ""); }
+        if (imageLinks == null) { return new ImageLinks(null, null); }
         return imageLinks;
     }
 

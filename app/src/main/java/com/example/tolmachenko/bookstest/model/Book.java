@@ -1,7 +1,14 @@
 package com.example.tolmachenko.bookstest.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+
+import static android.R.attr.id;
 
 /**
  * Created by Olga Tolmachenko on 03.12.16.
@@ -9,6 +16,7 @@ import io.realm.annotations.PrimaryKey;
 
 public class Book extends RealmObject {
 
+    @PrimaryKey
     private String title;
     private String infoLink;
     private String thumbnail;
@@ -19,6 +27,12 @@ public class Book extends RealmObject {
         this.title = title;
         this.infoLink = infoLink;
         this.thumbnail = thumbnail;
+    }
+
+    public Book(Parcel in) {
+        this.title = in.readString();
+        this.infoLink = in.readString();
+        this.thumbnail = in.readString();
     }
 
     public String getTitle() {
